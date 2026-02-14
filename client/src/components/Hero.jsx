@@ -14,9 +14,9 @@ const Hero = () => {
         <div className="w-20 h-20 rounded-full bg-blue-500/80 flex items-center justify-center mb-6">
           <MdVideoCall className="w-10 h-10 text-white" />
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Video Chat</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">ZegoCloud Video Chat</h1>
         <p className="text-lg md:text-xl text-blue-100 max-w-xl mb-8">
-          HD video calls with in-call chat, screen sharing, and invite links. Create a room or join with a code.
+          Start a video call and invite others with a link. Video, audio, and screen sharing—all in one app. Powered by ZEGOCLOUD.
         </p>
         <Link
           to="/join"

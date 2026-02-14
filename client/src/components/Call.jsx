@@ -82,33 +82,30 @@ const Call = () => {
 
         const zp = ZegoUIKitPrebuilt.create(kitToken);
         zpRef.current = zp;
-        const inviteUrl = `${window.location.origin}${window.location.pathname}?roomID=${encodeURIComponent(roomID)}&userName=${encodeURIComponent(userName)}`;
         zp.joinRoom({
           container: containerRef.current,
           scenario: { mode: ZegoUIKitPrebuilt.VideoConference },
-          sharedLinks: [{ name: 'Copy invite link', url: inviteUrl }],
-          // Video chat features: prejoin, camera/mic, chat, participants, layout, screen share
+          sharedLinks: [
+            {
+              name: 'Copy link',
+              url: `${window.location.origin}${window.location.pathname}?roomID=${encodeURIComponent(roomID)}&userName=${encodeURIComponent(userName)}`,
+            },
+          ],
+          // Minimal UI: only video call controls, hide SDK service list and extra options
           showPreJoinView: true,
           turnOnCameraWhenJoining: true,
           turnOnMicrophoneWhenJoining: true,
+          showMoreButton: false,
+          showAudioVideoSettingsButton: false,
+          showRoomDetailsButton: false,
+          showUserList: false,
+          showTextChat: false,
+          rightPanelExpandedType: 'None',
+          showLayoutButton: false,
+          showScreenSharingButton: true,
           showMyCameraToggleButton: true,
           showMyMicrophoneToggleButton: true,
-          showScreenSharingButton: true,
-          showTextChat: true,
-          showUserList: true,
-          showLayoutButton: true,
-          layout: 'Auto',
           showPinButton: true,
-          showRoomTimer: true,
-          showLeaveRoomConfirmDialog: true,
-          showLeavingView: true,
-          lowerLeftNotification: {
-            showUserJoinAndLeave: true,
-            showTextChat: true,
-          },
-          showRoomDetailsButton: false,
-          showMoreButton: false,
-          showAudioVideoSettingsButton: true,
           showInviteToCohostButton: false,
           showRemoveCohostButton: false,
           showRequestToCohostButton: false,
@@ -116,7 +113,17 @@ const Call = () => {
           showTurnOffRemoteCameraButton: false,
           showTurnOffRemoteMicrophoneButton: false,
           showRemoveUserButton: false,
-          whiteboardConfig: { showCreateAndCloseButton: false },
+          lowerLeftNotification: {
+            showUserJoinAndLeave: true,
+            showTextChat: false,
+          },
+          whiteboardConfig: {
+            showCreateAndCloseButton: false,
+          },
+          showRoomTimer: false,
+          layout: 'Auto',
+          showLeavingView: true,
+          showLeaveRoomConfirmDialog: true,
         });
         setError(null);
       } catch (err) {

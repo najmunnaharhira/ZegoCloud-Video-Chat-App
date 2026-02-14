@@ -7,9 +7,9 @@ const Footer = () => {
     <div className="w-full mx-auto flex flex-wrap">
       <div className="flex w-full lg:w-1/2 ">
         <div className="px-3 md:px-0">
-          <h3 className="font-bold text-gray-900">ZegoCloud Video Chat</h3>
+          <h3 className="font-bold text-gray-900">Video Chat App</h3>
           <p className="py-4">
-            A demo video chat app powered by ZEGOCLOUD. Start a call, share the room link, and invite others to join.
+            Start a video call and invite others with a link. Video, mic, and screen sharing in one app. Powered by ZEGOCLOUD.
           </p>
         </div>
       </div>

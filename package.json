@@ -3,11 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "description": "ZegoCloud Video Chat - production-ready video call app",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/YOUR_USERNAME/ZegoCloud-Video-Chat-App.git"
-  },
-  "keywords": ["video-chat", "zegocloud", "webrtc", "react", "express"],
   "scripts": {
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:server": "cd server && set PORT=5001 && npm run dev",

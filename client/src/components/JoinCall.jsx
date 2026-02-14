@@ -20,35 +20,19 @@ function sanitize(str, maxLen) {
 
 const JoinCall = () => {
   const navigate = useNavigate();
-  const [userName, setUserName] = useState('');
   const [roomID, setRoomID] = useState('');
+  const [userName, setUserName] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleCreateAndJoin = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setError('');
+    const name = sanitize(userName, MAX_NAME_LENGTH) || `User_${randomID(4)}`;
+    const id = sanitize(roomID, MAX_ROOM_ID_LENGTH) || randomID(6);
     setLoading(true);
-    const id = randomID(6);
-    const displayName = sanitize(userName, MAX_NAME_LENGTH) || `User_${randomID(4)}`;
-    navigate(`/call?roomID=${encodeURIComponent(id)}&userName=${encodeURIComponent(displayName)}`, {
-      state: { userName: displayName, roomID: id },
-    });
-    setLoading(false);
-  };
-
-  const handleJoinWithCode = (e) => {
-    e.preventDefault();
-    setError('');
-    const displayName = sanitize(userName, MAX_NAME_LENGTH) || `User_${randomID(4)}`;
-    const id = sanitize(roomID, MAX_ROOM_ID_LENGTH);
-    if (!id) {
-      setError('Enter a room ID or use "Create new room".');
-      return;
-    }
-    setLoading(true);
-    navigate(`/call?roomID=${encodeURIComponent(id)}&userName=${encodeURIComponent(displayName)}`, {
-      state: { userName: displayName, roomID: id },
+    navigate(`/call?roomID=${encodeURIComponent(id)}&userName=${encodeURIComponent(name)}`, {
+      state: { userName: name, roomID: id },
     });
     setLoading(false);
   };
@@ -60,11 +44,11 @@ const JoinCall = () => {
           <div className="w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center mb-4" aria-hidden>
             <MdVideoCall className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-800">Video Chat</h1>
-          <p className="text-gray-500 text-sm mt-1">Start or join a video call with chat</p>
+          <h1 className="text-2xl font-bold text-gray-800">ZegoCloud Video Chat</h1>
+          <p className="text-gray-500 text-sm mt-1">Start or join a video call</p>
         </div>
 
-        <form onSubmit={handleJoinWithCode} className="space-y-5" noValidate>
+        <form onSubmit={handleSubmit} className="space-y-5" noValidate>
           <div>
             <label htmlFor="join-userName" className="block text-sm font-medium text-gray-700 mb-1">
               Your name
@@ -76,29 +60,17 @@ const JoinCall = () => {
               maxLength={MAX_NAME_LENGTH}
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
-              placeholder="e.g. Alex"
+              placeholder="e.g. John"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:opacity-50"
               disabled={loading}
               aria-invalid={error ? 'true' : undefined}
               aria-describedby={error ? 'join-error' : undefined}
             />
           </div>
-
-          <div className="border-t border-gray-200 pt-5">
-            <p className="text-sm font-medium text-gray-700 mb-2">Create new room</p>
-            <p className="text-xs text-gray-500 mb-3">Start a call and invite others with a link.</p>
-            <button
-              type="button"
-              onClick={handleCreateAndJoin}
-              disabled={loading}
-              className="w-full py-3 px-4 bg-blue-500 hover:bg-blue-600 disabled:bg-blue-400 disabled:cursor-not-allowed text-white font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-            >
-              {loading ? 'Joining…' : 'Create room & join'}
-            </button>
-          </div>
-
-          <div className="border-t border-gray-200 pt-5">
-            <p className="text-sm font-medium text-gray-700 mb-2">Join with room ID</p>
+          <div>
+            <label htmlFor="join-roomID" className="block text-sm font-medium text-gray-700 mb-1">
+              Room ID <span className="text-gray-400 font-normal">(leave blank to create new)</span>
+            </label>
             <input
               id="join-roomID"
               type="text"
@@ -106,24 +78,23 @@ const JoinCall = () => {
               maxLength={MAX_ROOM_ID_LENGTH}
               value={roomID}
               onChange={(e) => setRoomID(e.target.value)}
-              placeholder="Paste room ID or code"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:opacity-50 mb-3"
+              placeholder="e.g. abc123"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:opacity-50"
               disabled={loading}
             />
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full py-3 px-4 bg-gray-700 hover:bg-gray-800 disabled:opacity-50 text-white font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
-            >
-              Join with code
-            </button>
           </div>
-
           {error && (
             <p id="join-error" className="text-red-600 text-sm" role="alert">
               {error}
             </p>
           )}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3 px-4 bg-blue-500 hover:bg-blue-600 disabled:bg-blue-400 disabled:cursor-not-allowed text-white font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          >
+            {loading ? 'Joining…' : 'Join Video Call'}
+          </button>
         </form>
 
         <p className="mt-6 text-center text-gray-500 text-xs">
