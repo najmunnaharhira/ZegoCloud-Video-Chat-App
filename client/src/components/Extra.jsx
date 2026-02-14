@@ -12,8 +12,8 @@ const Extra = () => {
             Stripy Zig Zag Jigsaw Video and Team
           </h1>
           <a
-            className="text-xl text-white inline-block no-underline border-b border-white leading-relaxed  hover:text-black hover:border-black"
-            href="#"
+            className="text-xl text-white inline-block no-underline border-b border-white leading-relaxed hover:text-white/90 hover:border-white/80"
+            href="/#shop"
           >
             show preview
           </a>

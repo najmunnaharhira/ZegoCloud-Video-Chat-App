@@ -1,0 +1,8 @@
+[
+  {"id":1,"name":"Cinematic Camera Lens","image":"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80","price":"£149.99","description":"Professional lens for video production"},
+  {"id":2,"name":"4K Video Camera Rig","image":"https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80","price":"£899.99","description":"Stabilized rig for smooth footage"},
+  {"id":3,"name":"Studio Lighting Kit","image":"https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80","price":"£249.99","description":"Three-point lighting for interviews"},
+  {"id":4,"name":"Vintage Typewriter","image":"https://images.unsplash.com/reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=400&q=80","price":"£79.99","description":"Props for period film production"},
+  {"id":5,"name":"Drone Aerial Kit","image":"https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80","price":"£599.99","description":"Aerial cinematography package"},
+  {"id":6,"name":"Sound Recording Pack","image":"https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80","price":"£349.99","description":"Boom mic and recorder bundle"}
+]
